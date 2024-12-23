@@ -1,5 +1,6 @@
 //importar express
 import express from "express"
+import cors from 'cors'
 //importar los routes
 import productosRoutes from './routes/productos.routes.js'
 import rolRoutes from './routes/rol.routes.js'
@@ -12,6 +13,9 @@ import loginUsuario from './routes/login.routes.js'
 
 //inicializar express en app
 const app = express()
+
+//inicializar cors
+app.use(cors())
 
 //configurando express para recibir informacion desde el cliente
 app.use(express.json())
