@@ -18,7 +18,7 @@ const router = Router();
 //enpoint   //middlewares  //metodo en el controlador
 router.get("/CategoriasProducto", authenticateToken, authorizeRole([1,2]), obtenerCategorias);
 router.get("/CategoriaProducto/:idCategoriaProductos", authenticateToken, authorizeRole([1,2]), obtenerCategoria);
-router.post("/CategoriaProducto", authorizeRole([1,2]), authenticateToken, crearCategoria);
+router.post("/CategoriaProducto",  authenticateToken, authorizeRole([1,2]), crearCategoria);
 router.put("/CategoriaProducto/:idCategoriaProductos", authenticateToken, authorizeRole([1,2]), actualizarCategoria);
 
 
