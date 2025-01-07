@@ -84,36 +84,6 @@ export const crearOrdenDetalle = async (req, res) => {
   }
 };
 
-export const obtenerOrdenesPorUsuario = async (req, res) => {
-  const idUsuarios = req.params.idUsuarios;
-
-  try {
-    const [resultado] = await sequelize.query(
-      `EXEC SP_ObtenerOrdenesPorUsuario @idUsuarios = :idUsuarios`,
-      {
-        replacements: { idUsuarios },
-        type: sequelize.QueryTypes.SELECT,
-      }
-    );
-
-    if (!resultado || resultado.length === 0) {
-      return res.status(400).json({
-        message: `No se encontro ordenes para el usuariocon ID ${idUsuarios}`,
-      });
-    }
-
-    return res.status(200).json({
-      message: "Ordenes obetenidas exitosamente",
-      data: resultado,
-    });
-  } catch (error) {
-    console.error("Error al obtener las ordenes por usuario", error.message);
-    return res.status(500).json({
-      message: "Error al obtener las ordenes por usuario",
-      error: error.message,
-    });
-  }
-};
 
 export const actualizarOrdenConDetalles = async (req, res) => {
   const { body } = req;

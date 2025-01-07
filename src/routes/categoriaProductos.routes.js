@@ -7,6 +7,7 @@ import {
 
 } from "../controllers/categoriaProductos.controller.js";
 
+
 import { authenticateToken, authorizeRole } from "../middleware/authenticateToken.js";
 
 //inicializando el router

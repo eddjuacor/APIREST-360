@@ -11,6 +11,12 @@ import Cliente from './routes/cliente.routes.js'
 import OrdenDetalle from './routes/ordenDetalle.routes.js'
 import loginUsuario from './routes/login.routes.js'
 
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// Define __filename y __dirname en ES Modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 //inicializar express en app
 const app = express()
 
@@ -19,6 +25,12 @@ app.use(cors())
 
 //configurando express para recibir informacion desde el cliente
 app.use(express.json())
+
+// Ruta absoluta para la carpeta 'uploads'
+const uploadsPath = path.join(__dirname, 'uploads');
+
+// Servir la carpeta 'uploads' como recurso estático
+app.use('/producto', express.static(uploadsPath));
 
 //utilizando el router de productos
 app.use(productosRoutes);
